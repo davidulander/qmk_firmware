@@ -7,6 +7,8 @@ Keyboard layout editor: http://www.keyboard-layout-editor.com/#/
 
 Where keys are place on different keyboard types: https://github.com/qmk/qmk_firmware/blob/master/docs/faq_keymap.md (ISO is default)
 
+Key codes: https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes.md
+
 ## Setup
 install avr-gcc `brew install avr-gcc@8`
 install teensy loader: `https://www.pjrc.com/teensy/loader_mac.html`
