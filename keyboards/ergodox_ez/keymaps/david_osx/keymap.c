@@ -6,8 +6,10 @@
 #include "action_layer.h"
 
 #define BASE 0 // default layer
-#define SYMB 1 // symbols
+#define SYMB 1 // Symbols
 #define ARRW 2 // Arrows
+#define MOUS 3 // Mouse
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -35,11 +37,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_ESC,           KC_1,             KC_2,             KC_3,         KC_4,               KC_5,               LALT(KC_2),
-        KC_TAB,           KC_Q,             KC_W,             KC_E,         KC_R,               KC_T,               KC_TAB,
-        KC_NO,            KC_A,             LSFT_T(KC_S),     CTL_T(KC_D),  ALT_T(KC_F),        LGUI_T(KC_G),
-        KC_LSFT,          KC_Z,             KC_X,             KC_C,         KC_V,               LT(ARRW,KC_B),       KC_BSPC,
-        KC_LCTL,          KC_LALT,          KC_LGUI,          KC_NO,        LT(SYMB,KC_SPC),
+        KC_ESC,           KC_1,             KC_2,             KC_3,                 KC_4,               KC_5,               LALT(KC_2),
+        KC_TAB,           KC_Q,             KC_W,             LT(MOUS,KC_E),        KC_R,               KC_T,               KC_TAB,
+        KC_NO,            KC_A,             LSFT_T(KC_S),     CTL_T(KC_D),          ALT_T(KC_F),        LGUI_T(KC_G),
+        KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               LT(ARRW,KC_B),      KC_BSPC,
+        KC_LCTL,          KC_LALT,          KC_LGUI,          KC_NO,                KC_SPC,
                                                                                       KC_LALT,   KC_LGUI,
                                                                                       KC_HOME,
                                                                     LT(ARRW,KC_ENT),  KC_LGUI,   KC_END,
@@ -136,6 +138,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_WBAK
 ),
+/* Keymap 3: MOUSE
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |CMD-UP| MsUp |CMDDWN|      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      | Acc0 |      | Acc1 |      |------|           |------| ScLf | MsLf | MsDn | MsRt | ScLf |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      | ScUp |      | ScDn |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// MOUSE
+[MOUS] = LAYOUT_ergodox(
+       KC_NO, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO, KC_NO,
+       KC_NO, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO, KC_NO,
+       KC_NO, KC_NO,   KC_ACL0,  KC_NO,   KC_ACL1, KC_NO,
+       KC_NO, KC_NO,   KC_NO,    KC_NO,   KC_NO,   KC_NO, KC_NO,
+       KC_NO, KC_NO,   KC_NO,    KC_NO,   KC_NO,
+                                           KC_TRNS, KC_TRNS,
+                                                    KC_TRNS,
+                                  KC_TRNS, KC_TRNS, KC_TRNS,
+    // right hand
+       KC_NO,    KC_NO,   KC_NO,       KC_NO,      KC_NO,          KC_NO,    KC_NO,
+       KC_TRNS,  KC_NO,   LGUI(KC_UP), KC_MS_UP,   LGUI(KC_DOWN),  KC_NO,    KC_NO,
+                 KC_WH_L, KC_MS_LEFT,  KC_MS_DOWN, KC_MS_RIGHT,    KC_WH_R,  KC_NO,
+       KC_TRNS,  KC_NO,   KC_WH_U,     KC_NO,      KC_WH_D,        KC_NO,    KC_NO,
+                          KC_NO,       KC_NO,      KC_NO,          KC_NO,    KC_NO,
+       KC_TRNS, KC_TRNS,
+       KC_TRNS,
+       KC_TRNS, KC_TRNS, KC_WBAK
+),
 };
 
 // Runs just one time when the keyboard initializes.
@@ -159,6 +202,9 @@ void matrix_scan_user(void) {
       break;
     case ARRW:
       ergodox_right_led_2_on();
+      break;
+    case MOUS:
+      ergodox_right_led_3_on();
       break;
     default:
       // none
