@@ -15,45 +15,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * | ESC    |   1  |   2  |   3  |   4  |   5  |   @  |           |   $  |   6  |   7  |   8  |   9  |   0  |   ?+   |
+ * | ESC    |   1  |   2  | 3/L3 |   4  |   5  |   @  |           |   $  |   6  |   7  | 8/L3 |   9  |   0  |   ?+   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  | E/L3 |   R  |   T  | TAB  |           | Del  |   Y  |   U  | I/L3 |   O  |   P  |   Å    |
+ * | Tab    |   Q  |   W  |   E  |   R  |   T  | TAB  |           | Del  |   Y  |   U  |   I  |   O  |   P  |   Å    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | NO     |   A  |Shft/S|Ctrl/D|F/Alt |G/CMD |------|           |------|Shft/H|Ctrl/J|Alt/K |   L  |   Ö  |   Ä    |
+ * | NO     |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   Ö  |   Ä    |
  * |--------+------+------+------+------+------| BkSp |           | BkSp |------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  | B/L2 |      |           |      |   N  |   M  |   ,  |   .  |-/Ctrl|   <    |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   -  |   NO   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl | Alt |  CMD  |  NO | Space |                                       |Space/L1|  NO  |   ¨^  |   ´` |  ' |
+ *   |  NO  | Ctrl |  Alt |  CMD |Space |                                       |Space |   NO |   NO |   NO |   NO  |
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Alt  | LGui |       | Alt  |Ctrl  |
+ *                                        |  NO  |  NO  |       |  NO  |  NO  |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
+ *                                 |      |      |  NO  |       |  NO  |        |      |
  *                                 | Space|BSpace|------|       |------|  CMD   |Enter |
- *                                 | /L2  |      | End  |       | PgDn |        | /L1  |
+ *                                 | /L2  |      |WSpace|       | Ctrl |        | /L1  |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_ESC,           KC_1,             KC_2,             KC_3,                 KC_4,               KC_5,               LALT(KC_2),
-        KC_TAB,           KC_Q,             KC_W,             LT(MOUS,KC_E),        KC_R,               KC_T,               KC_TAB,
-        KC_NO,            KC_A,             LSFT_T(KC_S),     CTL_T(KC_D),          ALT_T(KC_F),        LGUI_T(KC_G),
-        KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               LT(ARRW,KC_B),      KC_BSPC,
-        KC_LCTL,          KC_LALT,          KC_LGUI,          KC_NO,                KC_SPC,
-                                                                                      KC_LALT,   KC_LGUI,
-                                                                                      KC_HOME,
-                                                                    LT(ARRW,KC_SPC), KC_BSPC,   KC_END,
+        KC_ESC,           KC_1,             KC_2,             LT(MOUS,KC_3),        KC_4,               KC_5,               LALT(KC_2),
+        KC_TAB,           KC_Q,             KC_W,             KC_E,                 KC_R,               KC_T,               KC_TAB,
+        KC_NO,            KC_A,             KC_S,             KC_D,                 KC_F,               KC_G,
+        KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               KC_B,               KC_BSPC,
+        KC_NO,            KC_LCTL,          KC_LALT,          KC_LGUI,                KC_SPC,
+                                                                                      KC_NO,     KC_NO,
+                                                                                      KC_NO,
+                                                                              KC_SPC, KC_BSPC,   LALT(KC_BSPC),
         // right hand
-             LALT(KC_4),  KC_6,           KC_7,           KC_8,           KC_9,           KC_0,             KC_MINS,
-             KC_DEL,      KC_Y,           KC_U,           LT(MOUS,KC_I),  KC_O,           KC_P,             KC_LBRACKET,
-                          RSFT_T(KC_H),   CTL_T(KC_J),    ALT_T(KC_K),    KC_L,           KC_SCOLON,        KC_QUOTE,
-             KC_BSPC,     KC_N,           KC_M,           KC_COMM,        KC_DOT,         CTL_T(KC_SLSH),   KC_NUBS,
-                                          LT(SYMB,KC_SPC),KC_NO,          KC_RBRC,        KC_EQL,           KC_BSLS,
-             KC_LALT,   KC_LCTL,
-             KC_PGUP,
-             KC_PGDN,   KC_LGUI, LT(SYMB,KC_ENT)
+             LALT(KC_4),  KC_6,           KC_7,           LT(MOUS,KC_8),  KC_9,           KC_0,             KC_MINS,
+             KC_DEL,      KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,             KC_LBRACKET,
+                          KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,        KC_QUOTE,
+             KC_BSPC,     KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,          KC_NO,
+                                          KC_SPC,         KC_NO,          KC_NO,          KC_NO,            KC_NO,
+             KC_NO,     KC_NO,
+             KC_NO,
+             KC_LCTL,   KC_LGUI, LT(SYMB,KC_ENT)
     ),
 /* Keymap 1: Symbol Layer
  *
