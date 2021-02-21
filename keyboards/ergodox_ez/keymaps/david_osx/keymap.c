@@ -23,14 +23,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| BkSp |           | BkSp |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   -  |   NO   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |  NO  | Ctrl |  Alt |  CMD |Space |                                       |Space |   NO |   NO |   NO |   NO  |
+ *   |  NO  | Ctrl |  Alt |  CMD |Space/L2|                                     |Space |   NO |   NO |   NO |   NO  |
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |  NO  |  NO  |       |  NO  |  NO  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      |  NO  |       |  NO  |        |      |
  *                                 | Space|BSpace|------|       |------|  CMD   |Enter |
- *                                 | /L2  |      |WSpace|       | Ctrl |        | /L1  |
+ *                                 | /L1  |      |WSpace|       | Ctrl |        | /L1  |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -41,10 +41,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,           KC_Q,             KC_W,             KC_E,                 KC_R,               KC_T,               KC_TAB,
         KC_NO,            KC_A,             KC_S,             KC_D,                 KC_F,               KC_G,
         KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               KC_B,               KC_BSPC,
-        KC_NO,            KC_LCTL,          KC_LALT,          KC_LGUI,                KC_SPC,
-                                                                                      KC_NO,     KC_NO,
+        KC_NO,            KC_LCTL,          KC_LALT,          KC_LGUI,              LT(ARRW,KC_SPC),
+                                                                                      KC_NO,           KC_NO,
                                                                                       KC_NO,
-                                                                              KC_SPC, KC_BSPC,   LALT(KC_BSPC),
+                                                                                      LT(SYMB,KC_SPC), KC_BSPC,   LALT(KC_BSPC),
         // right hand
              LALT(KC_4),  KC_6,           KC_7,           LT(MOUS,KC_8),  KC_9,           KC_0,             KC_MINS,
              KC_DEL,      KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,             KC_LBRACKET,
