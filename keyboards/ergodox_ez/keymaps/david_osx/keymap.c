@@ -108,13 +108,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      | Home |      | End  |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |VolDn |VolUp | Mute |      |      |
+ *   |      |      |      |      |      |                                       | Mute |VolDn |VolUp |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |Brwser|
- *                                 |      |      |------|       |------|      |Back  |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -133,10 +133,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS,  KC_PGUP,       LGUI(KC_UP), KC_UP,   LGUI(KC_DOWN),  KC_PGDN,          KC_NO,
                  RALT(KC_LEFT), KC_LEFT,     KC_DOWN, KC_RIGHT,       RALT(KC_RIGHT),   KC_NO,
        KC_TRNS,  KC_NO,         KC_HOME,     KC_NO,   KC_END,         KC_NO,            KC_NO,
-                                KC_VOLD,     KC_VOLU, KC_MUTE,        KC_NO,            KC_NO,
+                                KC_MUTE,     KC_VOLD, KC_VOLU,        KC_NO,            KC_NO,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_WBAK
+       KC_TRNS, KC_TRNS,
 ),
 /* Keymap 3: MOUSE
  *
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |CMD-UP| MsUp |CMDDWN|      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      | Acc0 |      |      |      |------|           |------|      | MsLf | MsDn | MsRt |      |        |
+ * |        |      | Acc0 |      | Acc1 |      |------|           |------|      | MsLf | MsDn | MsRt |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -155,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 |Click |lClick|------|       |------|lClick|Click |
+ *                                 |      |      |------|       |------|lClick|Click |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -163,12 +163,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MOUS] = LAYOUT_ergodox(
        KC_NO, KC_NO,   KC_NO,       KC_NO,      KC_NO,      KC_NO, KC_NO,
        KC_NO, KC_NO,   KC_NO,       KC_NO,      KC_NO,      KC_NO, KC_NO,
-       KC_NO, KC_NO,   KC_ACL0,     KC_NO,      KC_NO,      KC_NO,
+       KC_NO, KC_NO,   KC_ACL0,     KC_NO,      KC_ACL1,    KC_NO,
        KC_NO, KC_NO,   KC_NO,       KC_NO,      KC_NO,      KC_NO, KC_NO,
        KC_NO, KC_NO,   KC_NO,       KC_NO,      KC_NO,
                                            KC_TRNS, KC_TRNS,
                                                     KC_TRNS,
-                                  KC_BTN1, KC_BTN2, KC_TRNS,
+                                  KC_TRNS, KC_TRNS, KC_TRNS,
     // right hand
        KC_NO,    KC_NO,   KC_NO,       KC_NO,      KC_NO,          KC_NO,    KC_NO,
        KC_TRNS,  KC_NO,   LGUI(KC_UP), KC_MS_UP,   LGUI(KC_DOWN),  KC_NO,    KC_NO,
