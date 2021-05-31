@@ -4,12 +4,30 @@
 #include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
+#include "sendstring_keymap_swedish.h"
 
 #define BASE 0 // default layer
 #define SYMB 1 // Symbols
 #define ARRW 2 // Arrows
 #define MOUS 3 // Mouse
 
+enum custom_keycodes {
+    TMP_STR = EZ_SAFE_RANGE,
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case TMP_STR:
+        if (record->event.pressed) {
+            // when keycode TMP_STR is pressed
+            SEND_STRING("$" SS_RSFT("[") SS_RSFT("]") SS_TAP(X_LEFT));
+        } else {
+            // when keycode TMP_STR is released
+        }
+        break;
+    }
+    return true;
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -41,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,           KC_Q,             KC_W,             LT(MOUS,KC_E),        KC_R,               KC_T,               KC_WH_U,
         KC_NO,            KC_A,             KC_S,             LT(SYMB,KC_D),        LT(ARRW,KC_F),      KC_G,
         KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               KC_B,               KC_WH_D,
-        KC_NO,            KC_NO,            KC_LCTL,          KC_LALT,              KC_LGUI,
+        TMP_STR,            KC_NO,            KC_LCTL,          KC_LALT,              KC_LGUI,
                                                                                       KC_NO,             KC_LSFT,
                                                                                       LGUI(KC_Z),
                                                                                       KC_BSPC,  KC_DEL,  KC_TAB,
