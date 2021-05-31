@@ -10,24 +10,11 @@
 #define SYMB 1 // Symbols
 #define ARRW 2 // Arrows
 #define MOUS 3 // Mouse
-#define NUMB 4 // Mouse
+#define NUMB 4 // Numbers
 
 enum custom_keycodes {
     VAR = EZ_SAFE_RANGE,
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case VAR:
-        if (record->event.pressed) {
-            // when keycode VAR is pressed
-            SEND_STRING("$" SS_RSFT("[") SS_RSFT("]") SS_TAP(X_LEFT));
-        } else {
-            // when keycode VAR is released
-        }
-        break;
-    }
-    return true;
+    SH,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -45,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |      | Ctrl |  Alt |  CMD |                                       | CMD  | Alt  | Ctrl |      |       |
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      | Shift|       |      |      |
+ *                                        |      | Shift|       |      |  SH  |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Undo |       | Shift|       |      |
  *                                 | BSpc |  Del |------|       |------| Enter |Space |
@@ -70,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                            KC_H,           LT(SYMB,KC_J),  KC_K,           KC_L,           KC_SCOLON,        KC_QUOTE,
              KC_RALT,      KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,          LALT(KC_2),
                                            KC_RGUI,        KC_RALT,        KC_RCTL,        KC_NO,            KC_NO,
-             KC_NO,   KC_NO,
+             KC_NO,   SH,
              KC_RSFT,
              KC_RGUI, KC_ENT, KC_SPC
     ),
@@ -244,7 +231,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-
 };
 
 // Runs constantly in the background, in a loop.
@@ -285,3 +271,19 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case VAR:
+        if (record->event.pressed) {
+            SEND_STRING("$" SS_RSFT("[") SS_RSFT("]") SS_TAP(X_LEFT));
+        } else {}
+        break;
+    case SH:
+        if (record->event.pressed) {
+            SEND_STRING(SS_DOWN(X_RCTL) SS_TAP(X_LBRACKET) SS_UP(X_RCTL));
+        } else {}
+        break;
+    }
+    return true;
+};
