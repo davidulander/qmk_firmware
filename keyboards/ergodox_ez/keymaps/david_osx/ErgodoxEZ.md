@@ -8,6 +8,7 @@ Keyboard layout editor: http://www.keyboard-layout-editor.com/#/
 Where keys are place on different keyboard types: https://github.com/qmk/qmk_firmware/blob/master/docs/faq_keymap.md (ISO is default)
 
 Key codes: https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes.md
+Macro definition: https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros
 
 ## Setup
 install avr-gcc `brew install avr-gcc@8`
