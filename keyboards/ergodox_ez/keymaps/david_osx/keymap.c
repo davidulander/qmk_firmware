@@ -32,11 +32,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |      | Ctrl |  Alt |  CMD |                                       | Ctrl |      |      |      |       |
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | ScLf | ScRt |       |      |  SH  |
+ *                                        | ScLf | ScRt |       | Frwrd|  SH  |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Undo |       | Shift|       |      |
+ *                                 |      |      | Undo |       | Back |       |      |
  *                                 | BSpc |  Del |------|       |------| Enter |Space |
- *                                 |      |      | Tab  |       | CMD  |       |      |
+ *                                 |      |      | Tab  |       | F12  |       |      |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -57,9 +57,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                            KC_H,           LT(SYMB,KC_J),  KC_K,           KC_L,           KC_SCOLON,        KC_QUOTE,
              KC_RALT,      KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,          LALT(KC_2),
                                            KC_RCTL,        KC_NO,          KC_NO,          KC_NO,            KC_NO,
-             KC_NO,   SH,
-             KC_RSFT,
-             KC_RGUI, KC_ENT, KC_SPC
+             LCTL(KC_DOT),   SH,
+             LCTL(KC_SLSH),
+             KC_F12, KC_ENT, KC_SPC
     ),
 /* Keymap 1: Symbol Layer
  *
@@ -135,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRNS,
                                   KC_TRNS, KC_TRNS, KC_TRNS,
     // right hand
-       KC_NO,    KC_NO,         KC_NO,       KC_NO,   KC_NO,          KC_NO,            KC_NO,
-       KC_TRNS,  KC_PGUP,       LGUI(KC_UP), KC_UP,   LGUI(KC_DOWN),  KC_PGDN,          KC_NO,
-                 RALT(KC_LEFT), KC_LEFT,     KC_DOWN, KC_RIGHT,       RALT(KC_RIGHT),   KC_NO,
-       KC_TRNS,  KC_NO,         KC_HOME,     KC_NO,   KC_END,         KC_NO,            KC_NO,
-                                KC_TRNS,     KC_TRNS, KC_TRNS,        KC_NO,            KC_NO,
+       KC_NO,    KC_NO,         KC_NO,          KC_NO,   KC_NO,          KC_NO,            KC_NO,
+       KC_TRNS,  KC_PGUP,       LGUI(KC_UP),    KC_UP,   LGUI(KC_DOWN),  KC_PGDN,          KC_NO,
+                 RALT(KC_LEFT), KC_LEFT,        KC_DOWN, KC_RIGHT,       RALT(KC_RIGHT),   KC_NO,
+       KC_TRNS,  KC_NO,         LGUI(KC_LEFT),  KC_NO,   LGUI(KC_RIGHT),         KC_NO,            KC_NO,
+                                KC_TRNS,        KC_TRNS, KC_TRNS,        KC_NO,            KC_NO,
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS,
