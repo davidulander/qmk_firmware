@@ -11,16 +11,18 @@ Key codes: https://github.com/qmk/qmk_firmware/blob/master/docs/keycodes.md
 Macro definition: https://beta.docs.qmk.fm/using-qmk/advanced-keycodes/feature_macros
 
 ## Setup
-install avr-gcc `brew install avr-gcc@8`
-install teensy loader: `https://www.pjrc.com/teensy/loader_mac.html`
-
+Install dependencies
+```
+brew tap osx-cross/avr
+brew install avr-gcc
+```
+Install teensy loader to load keymap into Ergodox: `https://www.pjrc.com/teensy/loader_mac.html`
 
 
 ## Build
-The Ez uses the [Teensy Loader](https://www.pjrc.com/teensy/loader.html).
+The Ez uses the [Teensy Loader](https://www.pjrc.com/teensy/loader_mac.html).
 
-
-Own firmware is placed in: `~/Projects/davidulander/qmk_firmware`
+Built firmware is placed in the root of this repo `~/Projects/davidulander/qmk_firmware` (might not be visable i VS Code for some reason)
 Build with: `make ergodox_ez:david_osx`
 
 To flash the firmware:
