@@ -21,6 +21,7 @@ Install teensy loader to load keymap into Ergodox: `https://www.pjrc.com/teensy/
 
 ## Build
 The Ez uses the [Teensy Loader](https://www.pjrc.com/teensy/loader_mac.html).
+Change layout visually and generate new keymaps with [tool](https://configure.zsa.io/ergodox-ez/layouts/default/latest/0) tool
 
 Built firmware is placed in the root of this repo `~/Projects/davidulander/qmk_firmware` (might not be visable i VS Code for some reason)
 Build with: `make ergodox_ez:david_osx`
