@@ -11,6 +11,7 @@
 #define ARRW 2 // Arrows
 #define MOUS 3 // Mouse
 #define NUMB 4 // Numbers
+#define MOUSE_LEFT 5 // Mouse in left hand
 
 enum custom_keycodes {
     VAR = EZ_SAFE_RANGE,
@@ -29,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| ScDn |           | ESC  |------+------+------+------+------+--------|
  * | Shift  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   -  |   @    |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      | HYPER| Ctrl |  Alt |  CMD |                                       | Ctrl | HYPER|      |      |       |
+ *   |  L5  | HYPER| Ctrl |  Alt |  CMD |                                       | Ctrl | HYPER|      |      |       |
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,--------------.
  *                                        | ScLf | ScRt |       | Frwrd|       |
@@ -47,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,           KC_Q,             KC_W,             LT(MOUS,KC_E),        KC_R,               KC_T,               KC_WH_U,
         KC_NO,            KC_A,             LT(NUMB,KC_S),    LT(ARRW,KC_D),        LT(SYMB,KC_F),      KC_G,
         KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               KC_B,               KC_WH_D,
-        KC_NO,            ALL_T(KC_NO),     KC_LCTL,          KC_LALT,              KC_LGUI,
+        TG(MOUSE_LEFT),   ALL_T(KC_NO),     KC_LCTL,          KC_LALT,              KC_LGUI,
                                                                                       KC_WH_L,              KC_WH_R,
                                                                                       SGUI(KC_F12),
                                                                                       KC_BSPC,  KC_DEL,     SH,
@@ -226,6 +227,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TRNS, KC_TRNS,
        KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS
+),
+/* Keymap 4: Number Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  TAB   |      |      |      |      |      |      |           | ScUp |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           | ScDn |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |  L1  |      | CTRL | ALT  | CMD  |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// MOUSE_LEFT
+[MOUSE_LEFT] = LAYOUT_ergodox(
+       // left hand
+       KC_TRNS,    KC_TRNS,     KC_TRNS,      	KC_TRNS,   	   KC_TRNS,    KC_TRNS,   	KC_TRNS,
+       KC_TAB,     KC_TRNS,     KC_TRNS,	    KC_TRNS, 	   KC_TRNS,    KC_TRNS,     KC_TRNS,
+       KC_TRNS,    KC_TRNS,     KC_TRNS,        KC_TRNS,       KC_TRNS,    KC_TRNS,
+       KC_TRNS,    KC_TRNS,     KC_TRNS,        KC_TRNS, 	   KC_TRNS,    KC_TRNS,     KC_TRNS,
+       KC_TRNS,    KC_TRNS,     KC_LCTL,        KC_LALT,       KC_LGUI,
+                                       KC_TRNS,KC_TRNS,
+                                               KC_TRNS,
+                               KC_TRNS,KC_TRNS,KC_TRNS,
+       // right hand
+       KC_TRNS, KC_TRNS,        KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,        KC_TRNS,
+       KC_WH_U, LGUI(KC_C),     LGUI(KC_X),KC_TRNS,   KC_TRNS,    KC_TRNS,        KC_TAB,
+                LGUI(KC_V),     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,        KC_TRNS,
+       KC_WH_D, LGUI(KC_Z),     KC_TRNS,   KC_TRNS,   KC_TRNS,    KC_TRNS,        KC_TRNS,
+                                KC_LGUI,   KC_TRNS,   KC_TRNS,    KC_TRNS,        KC_TRNS,
+       KC_WH_L, KC_WH_R,
+       KC_TRNS,
+       KC_TRNS, KC_DEL, KC_BSPC
 ),
 };
 
