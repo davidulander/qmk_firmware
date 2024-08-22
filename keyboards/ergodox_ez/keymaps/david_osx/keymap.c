@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| ScDn |           | ESC  |------+------+------+------+------+--------|
  * | Shift  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   -  |   @    |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      | HYPER| Ctrl |  Alt |  CMD |                                       | Ctrl | HYPER|      |      |       |
+ *   |preTab| HYPER| Ctrl |  Alt |  CMD |                                       | Ctrl | HYPER|      |      | nextTab|
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,--------------.
  *                                        | ScLf | ScRt |       | Frwrd|       |
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,           KC_Q,             KC_W,             LT(MOUS,KC_E),        KC_R,               KC_T,               KC_WH_U,
         KC_NO,            KC_A,             LT(NUMB,KC_S),    LT(ARRW,KC_D),        LT(SYMB,KC_F),      KC_G,
         KC_LSFT,          KC_Z,             KC_X,             KC_C,                 KC_V,               KC_B,               KC_WH_D,
-        KC_NO,            ALL_T(KC_NO),     KC_LCTL,          KC_LALT,              KC_LGUI,
+        RCS(KC_TAB),      ALL_T(KC_NO),     KC_LCTL,          KC_LALT,              KC_LGUI,
                                                                                       KC_WH_L,              KC_WH_R,
                                                                                       SGUI(KC_F12),
                                                                                       KC_BSPC,  KC_DEL,     SH,
@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              KC_NO,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,             KC_LBRACKET,
                            KC_H,           LT(SYMB,KC_J),  LALT_T(KC_K),   LGUI_T(KC_L),   KC_SCOLON,        KC_QUOTE,
              KC_ESC,       KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,          LALT(KC_2),
-                                           KC_RCTL,        ALL_T(KC_NO),   KC_NO,          KC_NO,            KC_NO,
+                                           KC_RCTL,        ALL_T(KC_NO),   KC_NO,          KC_NO,            LCTL(KC_TAB),
              LCTL(KC_DOT),   KC_NO,
              LCTL(KC_SLSH),
              KC_F12, KC_ENT, KC_SPC
