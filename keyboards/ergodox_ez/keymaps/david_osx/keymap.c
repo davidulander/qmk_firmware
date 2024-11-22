@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * | ESC    |   1  |   2  |   3  |   4  |   5  |C-W/L4|           |      |   6  |   7  |   8  |   9  |   0  |   ?+   |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  | E/L3 |   R  |   T  | ScUp |           |      |   Y  |   U  |   I  |   O  |   P  |   Å    |
+ * | Tab    |   Q  |   W  | E/L3 |   R  |   T  | ScUp |           |Editor|   Y  |   U  |   I  |   O  |   P  |   Å    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   A  | S/L4 | D/L2 | F/L1 |   G  |------|           |------|   H  | J/L1 | K/Alt| L/CMD|   Ö  |   Ä    |
  * |--------+------+------+------+------+------| ScDn |           | ESC  |------+------+------+------+------+--------|
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |preTab| HYPER| Ctrl |  Alt |  CMD |                                       | Ctrl | HYPER|CMS-p |HYP-l| nextTab|
  *   `----------------------------------'                                       `-----------------------------------'
  *                                        ,-------------.       ,--------------.
- *                                        | ScLf | ScRt |       | Frwrd|       |
+ *                                        | ScLf | ScRt |       | Frwrd|Explorer|
  *                                 ,------|------|------|       |------+-------+------.
  *                                 |      |      | Ref  |       | Back |       |      |
  *                                 | BSpc |  Del |------|       |------| Enter |Space |
@@ -54,11 +54,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                       KC_BSPC,  KC_DEL,     SH,
         // right hand
              KC_NO,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,             KC_MINS,
-             KC_NO,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,             KC_LBRACKET,
+             KC_F3,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,             KC_LBRACKET,
                            KC_H,           LT(SYMB,KC_J),  LALT_T(KC_K),   LGUI_T(KC_L),   KC_SCOLON,        KC_QUOTE,
              KC_ESC,       KC_N,           KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,          LALT(KC_2),
                                            KC_RCTL,        ALL_T(KC_NO),   LGUI(KC_P),     HYPR(KC_M),       LCTL(KC_TAB),
-             LCTL(KC_DOT),   KC_NO,
+             LCTL(KC_DOT),   KC_F8,
              LCTL(KC_SLSH),
              KC_F12, KC_ENT, KC_SPC
     ),
